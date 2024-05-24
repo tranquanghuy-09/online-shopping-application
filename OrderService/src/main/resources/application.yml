@@ -1,0 +1,55 @@
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+    register-with-eureka:
+      value: true
+    fetch-registry:
+      value: true
+    instance:
+      hostname: localhost
+
+#spring:
+#  config:
+#    import: "optional:configserver:"
+#  cloud:
+#    config:
+#      uri: http://localhost:9999
+
+#ratelimiter:
+#  instances:
+#    inventory:
+#      limitForPeriod: 2
+#      limitRefreshPeriod: 1s
+#      timeoutDuration: 1s
+
+# Resilience4j configurations
+resilience4j:
+  ratelimiter:
+    configs:
+      default:
+        limit-for-period: 2   # Giới hạn tốc độ sẽ cho phép 2 cuộc gọi mỗi giây
+        limit-refresh-period: 1s  # Thời gian giữa các lần reset lại giới hạn || Thời gian sau khi các đếm giới hạn tốc độ được làm mới. Ở đây, nó được đặt là 1 giây.
+        timeout-duration: 0 # Thời gian tối đa mà một luồng nên chờ để có quyền nếu giới hạn tốc độ bị vượt quá. Ở đây, nó được đặt là 0, nghĩa là sẽ không chờ.
+    instances:  # Chỉ định các instance của bộ giới hạn tốc độ với các cấu hình cụ thể.
+      inventoryService:   # Instance inventoryService sử dụng cấu hình default.
+        base-config: default
+
+# Optional additional configurations
+#logging:
+#  level:
+#    root: INFO
+#    org.springframework.web: DEBUG
+#    vn.edu.iuh.fit.orderservice: DEBUG
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
+
+
+

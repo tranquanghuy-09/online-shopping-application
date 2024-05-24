@@ -1,0 +1,13 @@
+#spring:
+#  jmx:
+#    enabled: false
+#  data:
+#    redis:
+#      repositories:
+#        enabled: true
+#  redis:
+#    host: redis-17850.c1.ap-southeast-1-1.ec2.redns.redis-cloud.com
+#    port: 17850
+#    password: uFj8afsiFFSeVxggzlEVUBaL5tkCxFPp
+#    expiry:
+#      time: 86400

@@ -1,0 +1,17 @@
+Cách Hoạt Động
+1. Sử dụng Annotation:
+
+    @RateLimiter(name = "inventoryService") áp dụng cấu hình bộ giới hạn tốc độ được định nghĩa trong application.yml dưới
+    resilience4j.ratelimiter.instances.inventoryService cho phương thức placeOrder.
+
+2. Giới Hạn Cuộc Gọi:
+
+    Phương thức placeOrder chỉ có thể được gọi 10 lần mỗi giây. Nếu có nhiều cuộc gọi hơn
+    trong một giây, chúng sẽ bị hạn chế dựa trên thiết lập timeout-duration, ở đây là 0,
+    nghĩa là không cho phép chờ và cuộc gọi sẽ thất bại ngay lập tức nếu giới hạn tốc độ bị vượt quá.
+
+3. Phương Thức Dự Phòng (Fallback):
+
+    Nếu giới hạn tốc độ bị vượt quá và một cuộc gọi thất bại, nó sẽ rơi vào phương thức dự
+    phòng fallbackMethod nhờ vào cấu hình của annotation @CircuitBreaker, cung cấp
+    một phản hồi thân thiện với người dùng.

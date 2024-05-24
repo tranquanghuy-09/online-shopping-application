@@ -1,0 +1,104 @@
+version: '3.9'
+services:
+  mysql:
+    image: mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: sapassword
+    ports:
+      - 3307:3306
+    volumes:
+      - "./datadir:/var/lib/mysql"
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
+
+  employee-service:
+    image: vutrue/auth-service:latest
+    restart: always
+    ports:
+      - 9898:9898
+    depends_on:
+      - mysql
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mariadb://db:3306/quanLyVanChuyen-JWTDb?createDatabaseIfNotExist=true
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: sapassword
+
+
+  ## Config Server
+  # config-server:
+#     image: tranquanghuyiy09/sa-bigreport-sortwavearchitecture:image-config-server
+#     container_name: config-server
+#     restart: always
+#     ports:
+#       - "9999:9999"
+# 
+#   ## Discovery Server
+#   discovery-server:
+#     image: tranquanghuyiy09/sa-bigreport-sortwavearchitecture:image-discovery-service
+#     container_name: discovery-server
+# 
+#     ports:
+#       - "8761:8761"
+#     depends_on:
+#       - config-server
+#     
+#       
+#   ## Employee Service Docker Compose Config
+#   employee-service:
+# #     image: tranquanghuyiy09/sa-bigreport-sortwavearchitecture:image-employee-service
+#     build: ./EmployeeService
+#     container_name: employee-service
+#     restart: always
+#     ports:
+#       - "8085:8085"
+#     networks:
+#       - mysql-employee-net
+#     depends_on:
+#       - mysql
+#       - discovery-server
+#     environment:
+#       SPRING_DATASOURCE_USERNAME: root
+#       SPRING_DATASOURCE_PASSWORD: sapassword
+#       SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3307/SA-EmployeeService?createDatabaseIfNotExist=true
+#       SPRING_CLOUD_CONFIG_URI: http://config-server:9999
+#     
+#       
+#   ## Customer Service Docker Compose Config
+#   customer-service:
+# #     image: tranquanghuyiy09/sa-bigreport-sortwavearchitecture:image-customer-service
+#     build: ./CustomerService
+#     container_name: customer-service
+#     restart: always
+#     ports:
+#       - "8086:8086"
+#     networks:
+#       - mysql-customer-net
+#     depends_on:
+#       - mysql
+#       - discovery-server
+#     environment:
+#       SPRING_DATASOURCE_USERNAME: root
+#       SPRING_DATASOURCE_PASSWORD: sapassword
+#       SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3307/SA-CustomerService?createDatabaseIfNotExist=true
+#       SPRING_CLOUD_CONFIG_URI: http://config-server:9999
+#       
+#   adminer:
+#     image: adminer
+#     container_name: cadminer
+#     restart: always
+#     ports:
+#       - "8123:8080"
+#     networks:
+#       - database-net
+# 
+# networks:
+#   database-net:
+#   mysql-customer-net:
+#   mysql-employee-net:
+
+

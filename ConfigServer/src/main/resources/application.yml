@@ -1,0 +1,26 @@
+#server:
+#  port: 8888
+#
+#  cloud:
+#    config:
+#      server:
+#        git:
+#          uri: https://github.com/tranquanghuy-09/springboot-config-server
+#          default-label: main
+#        bootstrap: false
+#
+#
+#
+spring:
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/tranquanghuy-09/springboot-config-server
+          clone-on-start: true
+        bootstrap: true
+      enabled: true
+
+  application:
+    name: Config-Server
+
