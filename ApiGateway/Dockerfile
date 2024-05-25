@@ -4,8 +4,8 @@ WORKDIR /api-gateway
 
 CMD ["./gradlew", "clean", "bootJar"]
 
-COPY build/libs/*.jar app.jar
+COPY build/libs/*.jar /api-gateway/app/
 
 EXPOSE 8080
 
-ENTRYPOINT ["java", "-jar", "app.jar"]
+ENTRYPOINT ["java", "-jar", "/api-gateway/app/app.jar"]
