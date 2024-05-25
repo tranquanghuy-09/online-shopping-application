@@ -2,10 +2,14 @@ FROM eclipse-temurin:17-jre
 
 WORKDIR /customer-service
 
+# Chạy lệnh Gradle để build ứng dụng
 CMD ["./gradlew", "clean", "bootJar"]
 
-COPY build/libs/*.jar app.jar
+# Copy file .jar vào thư mục /customer-service/app/
+COPY build/libs/*.jar /customer-service/app/app.jar
 
+# Expose cổng 8086
 EXPOSE 8086
 
-ENTRYPOINT ["java", "-jar", "app.jar"]
+# Khởi động ứng dụng
+ENTRYPOINT ["java", "-jar", "/customer-service/app/app.jar"]
