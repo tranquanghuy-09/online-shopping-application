@@ -6,7 +6,7 @@ WORKDIR /customer-service
 CMD ["./gradlew", "clean", "bootJar"]
 
 # Copy file .jar vào thư mục /customer-service/app/
-COPY build/libs/*.jar /customer-service/app/app.jar
+COPY build/libs/*.jar /customer-service/app/
 
 # Expose cổng 8086
 EXPOSE 8086
