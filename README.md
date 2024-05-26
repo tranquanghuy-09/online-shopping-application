@@ -1,7 +1,10 @@
 # Online Shopping Application
 
 # Diagram Backend - Microservice Architecture
-![Diagram Backend](https://gitlab.com/software-architecture-zero-nine/online-shopping-application/-/raw/main/Backend-Microservice-ZeroNine.png)
+![Backend-Microservice-ZeroNine-New-V2](https://github.com/tranquanghuy-09/online-shopping-application/assets/107989088/7015c5ae-a7b4-418c-af65-6f15da018a1e)
+
+# Diagram CD/CD Jenkins
+![Ảnh màn hình 2024-05-26 lúc 13 49 19](https://github.com/tranquanghuy-09/online-shopping-application/assets/107989088/00c470ec-1886-4433-9876-828df5a188c8)
 
 
 
