@@ -1,4 +1,7 @@
 # Online Shopping Application
+Note:
+- Deployed on AWS: <b>The server is currently down. </b>
+
 #### Members size: 2
 #### Architecture Used: Microservice Architecture
 #### Technologies Used: Java Spring (Spring JPA, Spring MVC, Spring Cloud, Spring Config…), JWT, Eureka Server, API Gateway, Redis Cache, Rate Limiter, Docker...
