@@ -1,0 +1,8 @@
+docker pull tranquanghuyiy09/onlineshoppingapplication:online-shopping-application-apigateway
+docker pull tranquanghuyiy09/onlineshoppingapplication:online-shopping-application-orderservice
+docker pull tranquanghuyiy09/onlineshoppingapplication:online-shopping-application-productservice
+docker pull tranquanghuyiy09/onlineshoppingapplication:online-shopping-application-authservice
+docker pull tranquanghuyiy09/onlineshoppingapplication:online-shopping-application-inventoryservice
+docker pull tranquanghuyiy09/onlineshoppingapplication:online-shopping-application-customerservice
+docker pull tranquanghuyiy09/onlineshoppingapplication:online-shopping-application-employeeservice
+docker pull tranquanghuyiy09/onlineshoppingapplication:online-shopping-application-discoveryservice

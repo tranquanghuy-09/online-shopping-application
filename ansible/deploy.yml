@@ -1,0 +1,31 @@
+---
+- name: Deploy Docker Compose on EC2
+  hosts: ec2
+  become: yes
+  tasks:
+    - name: Ensure Docker is installed
+      yum:
+        name: docker
+        state: present
+
+    - name: Ensure Docker is started and enabled
+      service:
+        name: docker
+        state: started
+        enabled: yes
+
+    - name: Check if Docker Compose is installed
+      command: /usr/local/bin/docker-compose --version
+      register: docker_compose_check
+      ignore_errors: yes
+
+    - name: Copy Docker Compose file to EC2
+      copy:
+        src: docker-compose.yml
+        dest: /home/ec2-user/docker-compose.yml
+
+    - name: Run Docker Compose
+      command: /usr/local/bin/docker-compose -f /home/ec2-user/docker-compose.yml up -d
+      args:
+        chdir: /home/ec2-user/
+
